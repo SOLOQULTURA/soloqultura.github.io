@@ -15,10 +15,11 @@
 
   <style>
     :root{
-      --bg:#000000;
+      --bg:#000;
       --text:rgba(255,255,255,0.92);
-      --muted:rgba(255,255,255,0.55);
-      --line:rgba(255,255,255,0.14);
+      --tag:rgba(255,255,255,0.72);     /* <-- più leggibile */
+      --muted:rgba(255,255,255,0.62);   /* <-- più leggibile */
+      --line:rgba(255,255,255,0.18);    /* <-- divider più presente */
     }
 
     *{box-sizing:border-box;}
@@ -32,18 +33,16 @@
       overflow-x:hidden;
     }
 
-    /* Nero profondo con vignetta leggerissima (neutro, no colori) */
     body::before{
       content:"";
       position:fixed;
       inset:0;
       pointer-events:none;
       background:
-        radial-gradient(900px 600px at 50% 28%, rgba(255,255,255,0.04), transparent 65%),
-        radial-gradient(1400px 1000px at 50% 82%, rgba(0,0,0,0.82), #000 70%);
+        radial-gradient(900px 600px at 50% 28%, rgba(255,255,255,0.045), transparent 65%),
+        radial-gradient(1400px 1000px at 50% 82%, rgba(0,0,0,0.84), #000 70%);
     }
 
-    /* Grain super fine (quasi invisibile) */
     body::after{
       content:"";
       position:fixed;
@@ -68,11 +67,10 @@
       display:flex;
       flex-direction:column;
       align-items:center;
-      gap:18px;
+      gap:16px;
       max-width:900px;
     }
 
-    /* WRAPPER del logo per animazioni (più controllabili) */
     .logo-wrap{
       display:inline-flex;
       align-items:center;
@@ -81,72 +79,74 @@
       will-change: transform;
     }
 
-    /* Logo: glow “respirato” e morbidissimo */
     .main-logo{
       width:clamp(300px, 38vw, 720px);
       height:auto;
       filter:
         brightness(1.06)
         contrast(1.02)
-        drop-shadow(0 0 42px rgba(255,255,255,0.055))
-        drop-shadow(0 0 140px rgba(255,255,255,0.028));
-      animation: breatheGlow 8.8s ease-in-out infinite;
+        drop-shadow(0 0 44px rgba(255,255,255,0.06))
+        drop-shadow(0 0 150px rgba(255,255,255,0.03));
+      animation: breatheGlow 9.8s ease-in-out infinite; /* un pelo più lento */
       will-change: filter;
-      transform: translateZ(0); /* aiuta alcuni browser */
+      transform: translateZ(0);
     }
 
-    /* Hover: appena più vivo, ma sempre “lux” */
     .logo-wrap:hover .main-logo{
       filter:
         brightness(1.10)
         contrast(1.03)
-        drop-shadow(0 0 60px rgba(255,255,255,0.075))
-        drop-shadow(0 0 180px rgba(255,255,255,0.04));
+        drop-shadow(0 0 62px rgba(255,255,255,0.08))
+        drop-shadow(0 0 190px rgba(255,255,255,0.04));
     }
 
-    /* Tagline fine */
+    /* Tagline: torna visibile */
     .tagline{
-      font-size:12px;
-      letter-spacing:0.28em;
-      text-transform:uppercase;
-      color:var(--muted);
-      font-weight:400;
+      font-size: clamp(12px, 1.2vw, 14px);
+      letter-spacing: 0.30em;
+      text-transform: uppercase;
+      color: var(--tag);
+      font-weight: 400;
+      margin-top: 2px;
     }
 
     .divider{
-      width:120px;
+      width:132px;
       height:1px;
       background:linear-gradient(90deg, transparent, var(--line), transparent);
-      margin:4px 0 10px 0;
+      margin:6px 0 8px;
     }
 
     .social{
       display:flex;
       gap:14px;
+      margin-top:2px;
     }
 
+    /* Social SEMPRE leggibili */
     .social a{
-      width:40px;
-      height:40px;
+      width:42px;
+      height:42px;
       display:flex;
       align-items:center;
       justify-content:center;
-      border-radius:50%;
-      border:1px solid rgba(255,255,255,0.08);
-      color:rgba(255,255,255,0.75);
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.12);
+      color:rgba(255,255,255,0.80);
       text-decoration:none;
-      background:rgba(255,255,255,0.02);
-      transition:transform .35s ease, background .35s ease, border-color .35s ease, color .35s ease;
+      background:rgba(255,255,255,0.03);
+      transition:transform .35s ease, background .35s ease, border-color .35s ease, color .35s ease, box-shadow .35s ease;
       outline:none;
     }
 
-    .social a i{ font-size:16px; }
+    .social a i{ font-size:17px; }
 
     .social a:hover{
       transform: translateY(-1px);
-      border-color:rgba(255,255,255,0.16);
+      border-color:rgba(255,255,255,0.18);
       color:#fff;
-      background:rgba(255,255,255,0.05);
+      background:rgba(255,255,255,0.06);
+      box-shadow: 0 0 26px rgba(255,255,255,0.08);
     }
 
     .social a:focus-visible{
@@ -154,42 +154,46 @@
       border-color:rgba(255,255,255,0.18);
     }
 
+    /* Email SEMPRE leggibile */
     .email{
-      font-size:12px;
-      color:rgba(255,255,255,0.55);
-      margin-top:4px;
+      font-size:12.5px;
+      color:var(--muted);
+      margin-top:2px;
     }
 
     .email a{
-      color:rgba(255,255,255,0.78);
+      color:rgba(255,255,255,0.82);
       text-decoration:none;
-      transition:color .3s ease;
+      border-bottom: 1px solid transparent;
+      transition:color .3s ease, border-color .3s ease;
     }
 
-    .email a:hover{ color:#fff; }
+    .email a:hover{
+      color:#fff;
+      border-bottom-color: rgba(255,255,255,0.28);
+    }
 
-    /* ===== Animazioni ultra-lux ===== */
     @keyframes breatheGlow{
       0%{
         filter:
           brightness(1.05)
           contrast(1.02)
-          drop-shadow(0 0 38px rgba(255,255,255,0.05))
-          drop-shadow(0 0 130px rgba(255,255,255,0.025));
+          drop-shadow(0 0 40px rgba(255,255,255,0.055))
+          drop-shadow(0 0 140px rgba(255,255,255,0.028));
       }
       50%{
         filter:
           brightness(1.085)
           contrast(1.03)
-          drop-shadow(0 0 52px rgba(255,255,255,0.07))
-          drop-shadow(0 0 170px rgba(255,255,255,0.036));
+          drop-shadow(0 0 56px rgba(255,255,255,0.075))
+          drop-shadow(0 0 180px rgba(255,255,255,0.038));
       }
       100%{
         filter:
           brightness(1.05)
           contrast(1.02)
-          drop-shadow(0 0 38px rgba(255,255,255,0.05))
-          drop-shadow(0 0 130px rgba(255,255,255,0.025));
+          drop-shadow(0 0 40px rgba(255,255,255,0.055))
+          drop-shadow(0 0 140px rgba(255,255,255,0.028));
       }
     }
 
@@ -199,10 +203,9 @@
       100% { transform: translateY(0px); }
     }
 
-    /* Rispetta chi disattiva le animazioni */
     @media (prefers-reduced-motion: reduce){
       .logo-wrap, .main-logo{ animation: none !important; }
-      body::after{ opacity:0.035; }
+      body::after{ opacity:0.04; }
     }
 
     @media (max-height: 680px){
@@ -214,7 +217,6 @@
 <body>
   <main class="container">
     <div class="wrap">
-
       <div class="logo-wrap" aria-label="SOLOQULTURA">
         <img src="images/logo.png" alt="SOLOQULTURA" class="main-logo">
       </div>
@@ -238,8 +240,8 @@
       <div class="email">
         <a href="mailto:soloqulturalab@gmail.com">soloqulturalab@gmail.com</a>
       </div>
-
     </div>
   </main>
 </body>
 </html>
+

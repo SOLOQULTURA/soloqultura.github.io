@@ -16,10 +16,8 @@
   <style>
     :root{
       --bg:#000;
-      --text:rgba(255,255,255,0.92);
-      --tag:rgba(255,255,255,0.72);     /* <-- più leggibile */
-      --muted:rgba(255,255,255,0.62);   /* <-- più leggibile */
-      --line:rgba(255,255,255,0.18);    /* <-- divider più presente */
+      --white:#ffffff;
+      --line:rgba(255,255,255,0.25);
     }
 
     *{box-sizing:border-box;}
@@ -28,220 +26,184 @@
       margin:0;
       padding:0;
       background:var(--bg);
-      color:var(--text);
+      color:var(--white);
       font-family:Inter, system-ui, -apple-system, sans-serif;
       overflow-x:hidden;
     }
 
+    /* Sfondo con profondità leggera */
     body::before{
       content:"";
       position:fixed;
       inset:0;
       pointer-events:none;
       background:
-        radial-gradient(900px 600px at 50% 28%, rgba(255,255,255,0.045), transparent 65%),
-        radial-gradient(1400px 1000px at 50% 82%, rgba(0,0,0,0.84), #000 70%);
+        radial-gradient(900px 600px at 50% 30%, rgba(255,255,255,0.04), transparent 65%),
+        radial-gradient(1400px 1000px at 50% 85%, rgba(0,0,0,0.85), #000 70%);
     }
 
-    body::after{
-      content:"";
-      position:fixed;
-      inset:-20%;
-      pointer-events:none;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
-      opacity:0.055;
-      transform:rotate(2deg);
-      mix-blend-mode:overlay;
-    }
-
+    /* Layout centrato stabile */
     .container{
-      min-height:100svh;
+      min-height:100vh;
       display:flex;
       align-items:center;
       justify-content:center;
       text-align:center;
-      padding:44px 18px;
+      padding:40px 20px;
     }
 
     .wrap{
       display:flex;
       flex-direction:column;
       align-items:center;
-      gap:16px;
+      gap:18px;
       max-width:900px;
+
+      /* Fade cinematografico */
+      opacity:0;
+      transform:translateY(12px);
+      animation: cinematicFade 1.4s cubic-bezier(.22,.61,.36,1) forwards;
     }
 
+    @keyframes cinematicFade{
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    /* Logo */
     .logo-wrap{
-      display:inline-flex;
+      display:flex;
       align-items:center;
       justify-content:center;
-      animation: floatLux 16s ease-in-out infinite;
-      will-change: transform;
     }
 
     .main-logo{
-      width:clamp(300px, 38vw, 720px);
+      width:clamp(300px, 42vw, 720px);
       height:auto;
       filter:
         brightness(1.06)
         contrast(1.02)
         drop-shadow(0 0 44px rgba(255,255,255,0.06))
-        drop-shadow(0 0 150px rgba(255,255,255,0.03));
-      animation: breatheGlow 9.8s ease-in-out infinite; /* un pelo più lento */
-      will-change: filter;
-      transform: translateZ(0);
+        drop-shadow(0 0 140px rgba(255,255,255,0.03));
+      animation: breatheSoft 9s ease-in-out infinite;
     }
 
-    .logo-wrap:hover .main-logo{
-      filter:
-        brightness(1.10)
-        contrast(1.03)
-        drop-shadow(0 0 62px rgba(255,255,255,0.08))
-        drop-shadow(0 0 190px rgba(255,255,255,0.04));
+    @keyframes breatheSoft{
+      0%{ opacity:0.96; }
+      50%{ opacity:1; }
+      100%{ opacity:0.96; }
     }
 
-    /* Tagline: torna visibile */
+    /* Mobile: animazioni leggere */
+    @media (max-width:768px){
+      .main-logo{
+        animation:none;
+        opacity:1;
+      }
+    }
+
+    /* Tagline */
     .tagline{
-      font-size: clamp(12px, 1.2vw, 14px);
-      letter-spacing: 0.30em;
-      text-transform: uppercase;
-      color: var(--tag);
-      font-weight: 400;
-      margin-top: 2px;
+      font-size:clamp(13px, 1.3vw, 15px);
+      letter-spacing:0.30em;
+      text-transform:uppercase;
+      font-weight:400;
+      color:#ffffff;
     }
 
     .divider{
-      width:132px;
+      width:140px;
       height:1px;
       background:linear-gradient(90deg, transparent, var(--line), transparent);
-      margin:6px 0 8px;
+      margin:6px 0 10px;
     }
 
+    /* Social */
     .social{
       display:flex;
-      gap:14px;
-      margin-top:2px;
+      gap:16px;
+      margin-top:4px;
     }
 
-    /* Social SEMPRE leggibili */
     .social a{
-      width:42px;
-      height:42px;
+      width:46px;
+      height:46px;
       display:flex;
       align-items:center;
       justify-content:center;
       border-radius:999px;
-      border:1px solid rgba(255,255,255,0.12);
-      color:rgba(255,255,255,0.80);
+      border:1px solid rgba(255,255,255,0.35);
+      color:#ffffff;
       text-decoration:none;
-      background:rgba(255,255,255,0.03);
-      transition:transform .35s ease, background .35s ease, border-color .35s ease, color .35s ease, box-shadow .35s ease;
-      outline:none;
+      background:rgba(255,255,255,0.05);
+      cursor:pointer;
     }
 
-    .social a i{ font-size:17px; }
-
-    .social a:hover{
-      transform: translateY(-1px);
-      border-color:rgba(255,255,255,0.18);
-      color:#fff;
-      background:rgba(255,255,255,0.06);
-      box-shadow: 0 0 26px rgba(255,255,255,0.08);
+    .social a i{
+      font-size:18px;
     }
 
-    .social a:focus-visible{
-      box-shadow:0 0 0 3px rgba(255,255,255,0.18);
-      border-color:rgba(255,255,255,0.18);
-    }
-
-    /* Email SEMPRE leggibile */
+    /* Email */
     .email{
-      font-size:12.5px;
-      color:var(--muted);
-      margin-top:2px;
+      font-size:13px;
+      margin-top:6px;
     }
 
     .email a{
-      color:rgba(255,255,255,0.82);
-      text-decoration:none;
-      border-bottom: 1px solid transparent;
-      transition:color .3s ease, border-color .3s ease;
+      color:#ffffff;
+      text-decoration:underline;
+      cursor:pointer;
     }
 
-    .email a:hover{
-      color:#fff;
-      border-bottom-color: rgba(255,255,255,0.28);
-    }
-
-    @keyframes breatheGlow{
-      0%{
-        filter:
-          brightness(1.05)
-          contrast(1.02)
-          drop-shadow(0 0 40px rgba(255,255,255,0.055))
-          drop-shadow(0 0 140px rgba(255,255,255,0.028));
-      }
-      50%{
-        filter:
-          brightness(1.085)
-          contrast(1.03)
-          drop-shadow(0 0 56px rgba(255,255,255,0.075))
-          drop-shadow(0 0 180px rgba(255,255,255,0.038));
-      }
-      100%{
-        filter:
-          brightness(1.05)
-          contrast(1.02)
-          drop-shadow(0 0 40px rgba(255,255,255,0.055))
-          drop-shadow(0 0 140px rgba(255,255,255,0.028));
-      }
-    }
-
-    @keyframes floatLux{
-      0%   { transform: translateY(0px); }
-      50%  { transform: translateY(-3px); }
-      100% { transform: translateY(0px); }
-    }
-
+    /* Rispetta utenti con riduzione movimento */
     @media (prefers-reduced-motion: reduce){
-      .logo-wrap, .main-logo{ animation: none !important; }
-      body::after{ opacity:0.04; }
+      .wrap{
+        animation:none;
+        opacity:1;
+        transform:none;
+      }
+      .main-logo{
+        animation:none;
+      }
     }
 
-    @media (max-height: 680px){
-      .container{ justify-content:flex-start; padding-top:34px; }
-    }
   </style>
 </head>
 
 <body>
   <main class="container">
     <div class="wrap">
-      <div class="logo-wrap" aria-label="SOLOQULTURA">
+
+      <div class="logo-wrap">
         <img src="images/logo.png" alt="SOLOQULTURA" class="main-logo">
       </div>
 
       <div class="tagline">SUONO. FUTURO. QLTURA.</div>
 
-      <div class="divider" role="separator" aria-hidden="true"></div>
+      <div class="divider"></div>
 
-      <nav class="social" aria-label="Social SOLOQULTURA">
-        <a href="https://instagram.com/solo.qultura" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <i class="fab fa-instagram" aria-hidden="true"></i>
+      <div class="social">
+        <a href="https://instagram.com/solo.qultura" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-instagram"></i>
         </a>
-        <a href="https://youtube.com/@soloqultura" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-          <i class="fab fa-youtube" aria-hidden="true"></i>
+        <a href="https://youtube.com/@soloqultura" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-youtube"></i>
         </a>
-        <a href="https://open.spotify.com/intl-it/artist/0lZbzkTC3h5CpS736vUP4f" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
-          <i class="fab fa-spotify" aria-hidden="true"></i>
+        <a href="https://open.spotify.com/intl-it/artist/0lZbzkTC3h5CpS736vUP4f" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-spotify"></i>
         </a>
-      </nav>
+      </div>
 
       <div class="email">
         <a href="mailto:soloqulturalab@gmail.com">soloqulturalab@gmail.com</a>
       </div>
+
     </div>
   </main>
 </body>
 </html>
+
+
 

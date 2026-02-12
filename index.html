@@ -1,119 +1,238 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SOLOQULTURA</title>
+  <meta name="description" content="SOLOQULTURA Studio — SUONO. FUTURO. QLTURA." />
+  <meta name="theme-color" content="#000000" />
+
+  <!-- Font (premium + pulito) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <!-- Icone Social -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-  html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background: #000;
-  color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
-  overflow: hidden;
-}
+    :root{
+      --bg: #000;
+      --fg: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.68);
+      --muted2: rgba(255,255,255,0.52);
+      --line: rgba(255,255,255,0.18);
+      --halo: rgba(255,255,255,0.16);
+      --halo2: rgba(255,255,255,0.09);
+      --maxw: 920px;
+      --radius: 18px;
+    }
 
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+    * { box-sizing: border-box; }
 
-.main-logo {
-  width: clamp(320px, 42vw, 720px);
-  height: auto;
-  margin-bottom: 8px;
-  filter: brightness(1.18) contrast(1.05) drop-shadow(0 0 28px rgba(255,255,255,0.18));
-  transition: 0.4s ease;
-}
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
 
-.main-logo:hover {
-  filter: brightness(1.28) contrast(1.08) drop-shadow(0 0 42px rgba(255,255,255,0.28));
-}
+    /* Sfondo premium: gradienti + vignette + grain */
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(1200px 700px at 50% 28%, rgba(255,255,255,0.07), transparent 60%),
+        radial-gradient(900px 520px at 18% 78%, rgba(120,180,255,0.05), transparent 60%),
+        radial-gradient(900px 520px at 82% 82%, rgba(255,120,180,0.035), transparent 62%),
+        radial-gradient(1200px 900px at 50% 60%, rgba(255,255,255,0.035), transparent 65%),
+        linear-gradient(to bottom, rgba(255,255,255,0.02), transparent 40%);
+      opacity: 1;
+    }
 
-.tagline {
-  margin-top: 8px;
-  font-size: 15px;
-  letter-spacing: 0.45em;
-  color: rgba(255,255,255,0.75);
-}
+    body::after{
+      /* grain ultra leggero */
+      content:"";
+      position: fixed;
+      inset: -20%;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+      opacity: 0.08;
+      transform: rotate(2deg);
+      mix-blend-mode: overlay;
+    }
 
-.divider {
-  margin: 25px 0;
-  width: 120px;
-  height: 1px;
-  background: rgba(255,255,255,0.3);
-}
+    .container{
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 42px 18px;
+    }
 
-.social {
-  display: flex;
-  gap: 22px;
-}
+    .wrap{
+      width: min(var(--maxw), 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
 
-.social a {
-  color: white;
-  font-size: 20px;
-  transition: 0.3s ease;
-}
+    /* Logo: dimensione + glow più “high-end” */
+    .main-logo{
+      width: clamp(260px, 36vw, 640px);
+      height: auto;
+      margin: 0;
+      filter:
+        brightness(1.08)
+        contrast(1.02)
+        drop-shadow(0 0 26px var(--halo2))
+        drop-shadow(0 0 58px rgba(255,255,255,0.06));
+      transition: transform .5s ease, filter .5s ease;
+      will-change: transform, filter;
+    }
 
-.social a:hover {
-  opacity: 0.6;
-}
+    .main-logo:hover{
+      transform: translateY(-2px) scale(1.008);
+      filter:
+        brightness(1.12)
+        contrast(1.03)
+        drop-shadow(0 0 34px var(--halo))
+        drop-shadow(0 0 86px rgba(255,255,255,0.08));
+    }
 
-.email {
-  margin-top: 22px;
-  font-size: 13px;
-  color: rgba(255,255,255,0.6);
-}
+    /* Titolo piccolo (opzionale), qui lasciamo solo tagline */
+    .tagline{
+      margin-top: 6px;
+      font-size: clamp(12px, 1.25vw, 14px);
+      letter-spacing: 0.38em;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-weight: 400;
+      line-height: 1.35;
+    }
 
-.email a {
-  color: rgba(255,255,255,0.8);
-  text-decoration: none;
-}
+    .divider{
+      margin: 18px 0 6px;
+      width: 140px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line), transparent);
+    }
 
-.email a:hover {
-  text-decoration: underline;
-}
+    .social{
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
 
+    .social a{
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      color: rgba(255,255,255,0.92);
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(6px);
+      transition: transform .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease, opacity .25s ease;
+      box-shadow: 0 0 0 rgba(0,0,0,0);
+      outline: none;
+    }
+
+    .social a i{
+      font-size: 18px;
+      opacity: 0.92;
+    }
+
+    .social a:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.14);
+      box-shadow: 0 0 26px rgba(255,255,255,0.08);
+    }
+
+    .social a:active{
+      transform: translateY(0px);
+      opacity: 0.92;
+    }
+
+    .social a:focus-visible{
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.22);
+      border-color: rgba(255,255,255,0.22);
+    }
+
+    .email{
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--muted2);
+    }
+
+    .email a{
+      color: rgba(255,255,255,0.78);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color .25s ease, color .25s ease;
+    }
+
+    .email a:hover{
+      color: rgba(255,255,255,0.92);
+      border-bottom-color: rgba(255,255,255,0.28);
+    }
+
+    /* Motion accessibility */
+    @media (prefers-reduced-motion: reduce){
+      .main-logo, .social a { transition: none; }
+      body::after{ opacity: 0.05; }
+    }
+
+    /* Piccoli schermi: evita tagli, lascia respirare */
+    @media (max-height: 680px){
+      .container{ justify-content: flex-start; padding-top: 34px; }
+    }
   </style>
 </head>
 
 <body>
+  <main class="container">
+    <div class="wrap">
+      <img src="images/logo.png" alt="SOLOQULTURA" class="main-logo" />
 
-  <div class="container">
-   <img src="images/logo.png" alt="SOLOQULTURA" class="main-logo">
+      <div class="tagline">SUONO. FUTURO. QLTURA.</div>
 
-    <div class="tagline">
-      SUONO. FUTURO. QLTURA.
+      <div class="divider" role="separator" aria-hidden="true"></div>
+
+      <nav class="social" aria-label="Social SOLOQULTURA">
+        <a href="https://instagram.com/solo.qultura" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <i class="fab fa-instagram" aria-hidden="true"></i>
+        </a>
+        <a href="https://youtube.com/@soloqultura" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <i class="fab fa-youtube" aria-hidden="true"></i>
+        </a>
+        <a href="https://open.spotify.com/intl-it/artist/0lZbzkTC3h5CpS736vUP4f" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
+          <i class="fab fa-spotify" aria-hidden="true"></i>
+        </a>
+      </nav>
+
+      <div class="email">
+        <a href="mailto:soloqulturalab@gmail.com">soloqulturalab@gmail.com</a>
+      </div>
     </div>
-
-    <div class="divider"></div>
-
-    <div class="social">
-      <!-- Sostituisci i link -->
-      <a href="https://instagram.com/solo.qultura" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://youtube.com/@soloqultura" target="_blank"><i class="fab fa-youtube"></i></a>
-      <a href="https://open.spotify.com/intl-it/artist/0lZbzkTC3h5CpS736vUP4f" target="_blank"><i class="fab fa-spotify"></i></a>
-
-    </div>
-
-    <div class="email">
-      <a href="mailto:soloqulturalab@gmail.com">soloqulturalab@gmail.com</a>
-    </div>
-
-  </div>
-
+  </main>
 </body>
 </html>
+
+
 
 
 

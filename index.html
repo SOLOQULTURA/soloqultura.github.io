@@ -7,198 +7,206 @@
   <meta name="description" content="SOLOQULTURA Studio — SUONO. FUTURO. QLTURA." />
   <meta name="theme-color" content="#000000" />
 
-  <!-- Font (premium + pulito) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-  <!-- Icone Social -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
     :root{
-      --bg: #000;
-      --fg: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.68);
-      --muted2: rgba(255,255,255,0.52);
-      --line: rgba(255,255,255,0.18);
-      --halo: rgba(255,255,255,0.16);
-      --halo2: rgba(255,255,255,0.09);
-      --maxw: 920px;
-      --radius: 18px;
+      --bg:#000000;
+      --text:rgba(255,255,255,0.92);
+      --muted:rgba(255,255,255,0.55);
+      --line:rgba(255,255,255,0.14);
     }
 
-    * { box-sizing: border-box; }
+    *{box-sizing:border-box;}
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: var(--bg);
-      color: var(--fg);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
-      overflow-x: hidden;
+    html,body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter, system-ui, -apple-system, sans-serif;
+      overflow-x:hidden;
     }
 
-    /* Sfondo premium: gradienti + vignette + grain */
+    /* Nero profondo con vignetta leggerissima (neutro, no colori) */
     body::before{
       content:"";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
+      position:fixed;
+      inset:0;
+      pointer-events:none;
       background:
-        radial-gradient(1200px 700px at 50% 28%, rgba(255,255,255,0.07), transparent 60%),
-        radial-gradient(900px 520px at 18% 78%, rgba(120,180,255,0.05), transparent 60%),
-        radial-gradient(900px 520px at 82% 82%, rgba(255,120,180,0.035), transparent 62%),
-        radial-gradient(1200px 900px at 50% 60%, rgba(255,255,255,0.035), transparent 65%),
-        linear-gradient(to bottom, rgba(255,255,255,0.02), transparent 40%);
-      opacity: 1;
+        radial-gradient(900px 600px at 50% 28%, rgba(255,255,255,0.04), transparent 65%),
+        radial-gradient(1400px 1000px at 50% 82%, rgba(0,0,0,0.82), #000 70%);
     }
 
+    /* Grain super fine (quasi invisibile) */
     body::after{
-      /* grain ultra leggero */
       content:"";
-      position: fixed;
-      inset: -20%;
-      pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
-      opacity: 0.08;
-      transform: rotate(2deg);
-      mix-blend-mode: overlay;
+      position:fixed;
+      inset:-20%;
+      pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+      opacity:0.055;
+      transform:rotate(2deg);
+      mix-blend-mode:overlay;
     }
 
     .container{
-      min-height: 100svh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 42px 18px;
+      min-height:100svh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:44px 18px;
     }
 
     .wrap{
-      width: min(var(--maxw), 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:18px;
+      max-width:900px;
     }
 
-    /* Logo: dimensione + glow più “high-end” */
+    /* WRAPPER del logo per animazioni (più controllabili) */
+    .logo-wrap{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      animation: floatLux 16s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    /* Logo: glow “respirato” e morbidissimo */
     .main-logo{
-      width: clamp(260px, 36vw, 640px);
-      height: auto;
-      margin: 0;
+      width:clamp(300px, 38vw, 720px);
+      height:auto;
       filter:
-        brightness(1.08)
+        brightness(1.06)
         contrast(1.02)
-        drop-shadow(0 0 26px var(--halo2))
-        drop-shadow(0 0 58px rgba(255,255,255,0.06));
-      transition: transform .5s ease, filter .5s ease;
-      will-change: transform, filter;
+        drop-shadow(0 0 42px rgba(255,255,255,0.055))
+        drop-shadow(0 0 140px rgba(255,255,255,0.028));
+      animation: breatheGlow 8.8s ease-in-out infinite;
+      will-change: filter;
+      transform: translateZ(0); /* aiuta alcuni browser */
     }
 
-    .main-logo:hover{
-      transform: translateY(-2px) scale(1.008);
+    /* Hover: appena più vivo, ma sempre “lux” */
+    .logo-wrap:hover .main-logo{
       filter:
-        brightness(1.12)
+        brightness(1.10)
         contrast(1.03)
-        drop-shadow(0 0 34px var(--halo))
-        drop-shadow(0 0 86px rgba(255,255,255,0.08));
+        drop-shadow(0 0 60px rgba(255,255,255,0.075))
+        drop-shadow(0 0 180px rgba(255,255,255,0.04));
     }
 
-    /* Titolo piccolo (opzionale), qui lasciamo solo tagline */
+    /* Tagline fine */
     .tagline{
-      margin-top: 6px;
-      font-size: clamp(12px, 1.25vw, 14px);
-      letter-spacing: 0.38em;
-      color: var(--muted);
-      text-transform: uppercase;
-      font-weight: 400;
-      line-height: 1.35;
+      font-size:12px;
+      letter-spacing:0.28em;
+      text-transform:uppercase;
+      color:var(--muted);
+      font-weight:400;
     }
 
     .divider{
-      margin: 18px 0 6px;
-      width: 140px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--line), transparent);
+      width:120px;
+      height:1px;
+      background:linear-gradient(90deg, transparent, var(--line), transparent);
+      margin:4px 0 10px 0;
     }
 
     .social{
-      display: flex;
-      gap: 18px;
-      align-items: center;
-      justify-content: center;
-      margin-top: 2px;
+      display:flex;
+      gap:14px;
     }
 
     .social a{
-      width: 42px;
-      height: 42px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      color: rgba(255,255,255,0.92);
-      text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
-      backdrop-filter: blur(6px);
-      transition: transform .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease, opacity .25s ease;
-      box-shadow: 0 0 0 rgba(0,0,0,0);
-      outline: none;
+      width:40px;
+      height:40px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,0.08);
+      color:rgba(255,255,255,0.75);
+      text-decoration:none;
+      background:rgba(255,255,255,0.02);
+      transition:transform .35s ease, background .35s ease, border-color .35s ease, color .35s ease;
+      outline:none;
     }
 
-    .social a i{
-      font-size: 18px;
-      opacity: 0.92;
-    }
+    .social a i{ font-size:16px; }
 
     .social a:hover{
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(255,255,255,0.14);
-      box-shadow: 0 0 26px rgba(255,255,255,0.08);
-    }
-
-    .social a:active{
-      transform: translateY(0px);
-      opacity: 0.92;
+      transform: translateY(-1px);
+      border-color:rgba(255,255,255,0.16);
+      color:#fff;
+      background:rgba(255,255,255,0.05);
     }
 
     .social a:focus-visible{
-      box-shadow: 0 0 0 3px rgba(255,255,255,0.22);
-      border-color: rgba(255,255,255,0.22);
+      box-shadow:0 0 0 3px rgba(255,255,255,0.18);
+      border-color:rgba(255,255,255,0.18);
     }
 
     .email{
-      margin-top: 14px;
-      font-size: 13px;
-      color: var(--muted2);
+      font-size:12px;
+      color:rgba(255,255,255,0.55);
+      margin-top:4px;
     }
 
     .email a{
-      color: rgba(255,255,255,0.78);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color .25s ease, color .25s ease;
+      color:rgba(255,255,255,0.78);
+      text-decoration:none;
+      transition:color .3s ease;
     }
 
-    .email a:hover{
-      color: rgba(255,255,255,0.92);
-      border-bottom-color: rgba(255,255,255,0.28);
+    .email a:hover{ color:#fff; }
+
+    /* ===== Animazioni ultra-lux ===== */
+    @keyframes breatheGlow{
+      0%{
+        filter:
+          brightness(1.05)
+          contrast(1.02)
+          drop-shadow(0 0 38px rgba(255,255,255,0.05))
+          drop-shadow(0 0 130px rgba(255,255,255,0.025));
+      }
+      50%{
+        filter:
+          brightness(1.085)
+          contrast(1.03)
+          drop-shadow(0 0 52px rgba(255,255,255,0.07))
+          drop-shadow(0 0 170px rgba(255,255,255,0.036));
+      }
+      100%{
+        filter:
+          brightness(1.05)
+          contrast(1.02)
+          drop-shadow(0 0 38px rgba(255,255,255,0.05))
+          drop-shadow(0 0 130px rgba(255,255,255,0.025));
+      }
     }
 
-    /* Motion accessibility */
+    @keyframes floatLux{
+      0%   { transform: translateY(0px); }
+      50%  { transform: translateY(-3px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* Rispetta chi disattiva le animazioni */
     @media (prefers-reduced-motion: reduce){
-      .main-logo, .social a { transition: none; }
-      body::after{ opacity: 0.05; }
+      .logo-wrap, .main-logo{ animation: none !important; }
+      body::after{ opacity:0.035; }
     }
 
-    /* Piccoli schermi: evita tagli, lascia respirare */
     @media (max-height: 680px){
-      .container{ justify-content: flex-start; padding-top: 34px; }
+      .container{ justify-content:flex-start; padding-top:34px; }
     }
   </style>
 </head>
@@ -206,7 +214,10 @@
 <body>
   <main class="container">
     <div class="wrap">
-      <img src="images/logo.png" alt="SOLOQULTURA" class="main-logo" />
+
+      <div class="logo-wrap" aria-label="SOLOQULTURA">
+        <img src="images/logo.png" alt="SOLOQULTURA" class="main-logo">
+      </div>
 
       <div class="tagline">SUONO. FUTURO. QLTURA.</div>
 
@@ -227,13 +238,8 @@
       <div class="email">
         <a href="mailto:soloqulturalab@gmail.com">soloqulturalab@gmail.com</a>
       </div>
+
     </div>
   </main>
 </body>
 </html>
-
-
-
-
-
-

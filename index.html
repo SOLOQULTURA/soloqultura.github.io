@@ -9,83 +9,88 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: #000;
-      color: #fff;
-      font-family: Arial, Helvetica, sans-serif;
-      overflow: hidden;
-    }
+  html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #000;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
 
-    .container {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
-    h1 {
-      font-size: clamp(42px, 8vw, 90px);
-      letter-spacing: 0.25em;
-      margin: 0;
-      font-weight: 800;
-    }
+.main-logo {
+  width: clamp(320px, 42vw, 720px);
+  height: auto;
+  margin-bottom: 8px;
+  filter: brightness(1.18) contrast(1.05) drop-shadow(0 0 28px rgba(255,255,255,0.18));
+  transition: 0.4s ease;
+}
 
-    .tagline {
-      margin-top: 20px;
-      font-size: 16px;
-      letter-spacing: 0.4em;
-      color: rgba(255,255,255,0.7);
-    }
+.main-logo:hover {
+  filter: brightness(1.28) contrast(1.08) drop-shadow(0 0 42px rgba(255,255,255,0.28));
+}
 
-    .divider {
-      margin: 30px 0;
-      width: 120px;
-      height: 1px;
-      background: rgba(255,255,255,0.3);
-    }
+.tagline {
+  margin-top: 8px;
+  font-size: 15px;
+  letter-spacing: 0.45em;
+  color: rgba(255,255,255,0.75);
+}
 
-    .social {
-      display: flex;
-      gap: 20px;
-    }
+.divider {
+  margin: 25px 0;
+  width: 120px;
+  height: 1px;
+  background: rgba(255,255,255,0.3);
+}
 
-    .social a {
-      color: white;
-      font-size: 20px;
-      transition: 0.3s;
-    }
+.social {
+  display: flex;
+  gap: 22px;
+}
 
-    .social a:hover {
-      opacity: 0.6;
-    }
+.social a {
+  color: white;
+  font-size: 20px;
+  transition: 0.3s ease;
+}
 
-    .email {
-      margin-top: 25px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.6);
-    }
+.social a:hover {
+  opacity: 0.6;
+}
 
-    .email a {
-      color: rgba(255,255,255,0.8);
-      text-decoration: none;
-    }
+.email {
+  margin-top: 22px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+}
 
-    .email a:hover {
-      text-decoration: underline;
-    }
+.email a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+}
+
+.email a:hover {
+  text-decoration: underline;
+}
+
   </style>
 </head>
 
 <body>
 
   <div class="container">
-   <img src="images/logo.png" alt="SOLOQULTURA" style="max-width:500px;width:75vw;height:auto;margin-bottom:20px;">
-
+   <img src="images/logo.png" alt="SOLOQULTURA" class="main-logo">
 
     <div class="tagline">
       SUONO. FUTURO. QLTURA.
@@ -109,6 +114,7 @@
 
 </body>
 </html>
+
 
 
 

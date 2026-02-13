@@ -4,19 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SOLOQULTURA</title>
+
   <link rel="icon" type="image/png" href="images/favicon.png">
+
   <meta name="description" content="SOLOQULTURA Studio — SUONO. FUTURO. QLTURA." />
   <meta name="theme-color" content="#000000" />
+
+  <!-- Open Graph -->
   <meta property="og:title" content="SOLOQULTURA">
-<meta property="og:description" content="SUONO. FUTURO. QLTURA.">
-<meta property="og:image" content="https://www.soloqultura.com/images/social-preview.png">
-<meta property="og:url" content="https://www.soloqultura.com/">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="google-site-verification" content="qh_Bh2l8vh5yyb0r0-qEk8X5JzGL40YWVfH4GUEg8Gs" /> />
+  <meta property="og:description" content="SUONO. FUTURO. QLTURA.">
+  <meta property="og:image" content="https://www.soloqultura.com/images/social-preview.png">
+  <meta property="og:url" content="https://www.soloqultura.com/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
 
-
-
+  <!-- Google Verification -->
+  <meta name="google-site-verification" content="qh_Bh2l8vh5yyb0r0-qEk8X5JzGL40YWVfH4GUEg8Gs" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,7 +45,6 @@
       overflow-x:hidden;
     }
 
-    /* Sfondo con profondità leggera */
     body::before{
       content:"";
       position:fixed;
@@ -53,7 +55,6 @@
         radial-gradient(1400px 1000px at 50% 85%, rgba(0,0,0,0.85), #000 70%);
     }
 
-    /* Layout centrato stabile */
     .container{
       min-height:100vh;
       display:flex;
@@ -69,8 +70,6 @@
       align-items:center;
       gap:18px;
       max-width:900px;
-
-      /* Fade cinematografico */
       opacity:0;
       transform:translateY(12px);
       animation: cinematicFade 1.4s cubic-bezier(.22,.61,.36,1) forwards;
@@ -83,7 +82,6 @@
       }
     }
 
-    /* Logo */
     .logo-wrap{
       display:flex;
       align-items:center;
@@ -107,7 +105,6 @@
       100%{ opacity:0.96; }
     }
 
-    /* Mobile: animazioni leggere */
     @media (max-width:768px){
       .main-logo{
         animation:none;
@@ -115,7 +112,6 @@
       }
     }
 
-    /* Tagline */
     .tagline{
       font-size:clamp(13px, 1.3vw, 15px);
       letter-spacing:0.30em;
@@ -131,7 +127,6 @@
       margin:6px 0 10px;
     }
 
-    /* Social */
     .social{
       display:flex;
       gap:16px;
@@ -156,7 +151,6 @@
       font-size:18px;
     }
 
-    /* Email */
     .email{
       font-size:13px;
       margin-top:6px;
@@ -168,7 +162,6 @@
       cursor:pointer;
     }
 
-    /* Rispetta utenti con riduzione movimento */
     @media (prefers-reduced-motion: reduce){
       .wrap{
         animation:none;
@@ -188,7 +181,7 @@
     <div class="wrap">
 
       <div class="logo-wrap">
-        <img src="images/logo.png" alt="SOLOQULTURA" class="main-logo">
+        <img src="images/new-logo.png" alt="SOLOQULTURA" class="main-logo">
       </div>
 
       <div class="tagline">SUONO. FUTURO. QLTURA.</div>
@@ -215,6 +208,8 @@
   </main>
 </body>
 </html>
+
+
 
 
 

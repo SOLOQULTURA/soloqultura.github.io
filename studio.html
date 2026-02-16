@@ -1,1 +1,241 @@
+<!-- studio.html -->
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio — SOLOQULTURA</title>
+
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <meta name="theme-color" content="#000000" />
+
+  <meta name="description" content="SOLOQULTURA — Studio creativo indipendente. Produzione, curatela e progetti culturali." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#000;
+      --white:#fff;
+      --muted:rgba(255,255,255,0.72);
+      --line:rgba(255,255,255,0.18);
+    }
+
+    *{box-sizing:border-box;}
+
+    html,body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--white);
+      font-family:Inter, system-ui, -apple-system, sans-serif;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background:
+        radial-gradient(900px 600px at 50% 25%, rgba(255,255,255,0.035), transparent 65%),
+        radial-gradient(1400px 1000px at 50% 90%, rgba(0,0,0,0.85), #000 70%);
+    }
+
+    .container{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:46px 20px;
+    }
+
+    .card{
+      width:min(920px, 100%);
+      text-align:center;
+      padding:10px 0;
+      opacity:0;
+      transform:translateY(10px);
+      animation: fadeIn 1.1s cubic-bezier(.22,.61,.36,1) forwards;
+    }
+
+    @keyframes fadeIn{
+      to{opacity:1; transform:translateY(0);}
+    }
+
+    .top{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .back{
+      position:absolute;
+      left:20px;
+      top:22px;
+      color:#fff;
+      text-decoration:none;
+      letter-spacing:0.22em;
+      text-transform:uppercase;
+      font-size:12px;
+      opacity:0.85;
+      padding:8px 10px;
+      border:1px solid rgba(255,255,255,0.18);
+      border-radius:999px;
+      background:rgba(255,255,255,0.04);
+      transition:opacity .18s ease, transform .18s ease, border-color .18s ease;
+    }
+
+    .back:hover{
+      opacity:1;
+      transform:translateY(-1px);
+      border-color:rgba(255,255,255,0.28);
+    }
+
+    h1{
+      margin:0;
+      font-size:13px;
+      letter-spacing:0.30em;
+      text-transform:uppercase;
+      font-weight:400;
+      color:#fff;
+    }
+
+    .divider{
+      width:140px;
+      height:1px;
+      background:linear-gradient(90deg, transparent, var(--line), transparent);
+      margin:18px auto 18px;
+    }
+
+    .lead{
+      max-width:720px;
+      margin:0 auto;
+      font-size:15px;
+      line-height:1.8;
+      color:var(--muted);
+      padding:0 6px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+      margin:26px auto 0;
+      max-width:720px;
+      text-align:left;
+    }
+
+    .item{
+      border:1px solid rgba(255,255,255,0.16);
+      background:rgba(255,255,255,0.04);
+      border-radius:14px;
+      padding:16px 16px;
+    }
+
+    .item-title{
+      font-size:12px;
+      letter-spacing:0.22em;
+      text-transform:uppercase;
+      font-weight:400;
+      margin:0 0 8px 0;
+      color:#fff;
+    }
+
+    .item-text{
+      margin:0;
+      color:rgba(255,255,255,0.78);
+      font-size:14px;
+      line-height:1.75;
+    }
+
+    .foot{
+      margin-top:26px;
+      font-size:12px;
+      letter-spacing:0.20em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,0.70);
+    }
+
+    .foot a{
+      color:#fff;
+      text-decoration:underline;
+    }
+
+    @media (min-width:840px){
+      .grid{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .card{animation:none; opacity:1; transform:none;}
+      .back{transition:none;}
+    }
+  </style>
+</head>
+
+<body>
+  <a class="back" href="index.html">← Home</a>
+
+  <main class="container">
+    <section class="card">
+
+      <h1>STUDIO</h1>
+      <div class="divider"></div>
+
+      <p class="lead">
+        SOLOQULTURA è uno spazio creativo indipendente che lavora sul suono come linguaggio:
+        produzione musicale, direzione artistica, identità sonore e progetti culturali.
+        Un approccio curato, essenziale, costruito tra studio e territorio.
+      </p>
+
+      <div class="grid">
+
+        <div class="item">
+          <div class="item-title">Produzione</div>
+          <p class="item-text">
+            Beat, arrangiamenti, registrazione e sviluppo di brani. Dall’idea alla forma finale,
+            con attenzione al carattere e alla direzione del progetto.
+          </p>
+        </div>
+
+        <div class="item">
+          <div class="item-title">Mix &amp; Master</div>
+          <p class="item-text">
+            Mix pulito, dinamica controllata, master pronto per piattaforme e ascolti reali.
+            Suono presente, senza perdere identità.
+          </p>
+        </div>
+
+        <div class="item">
+          <div class="item-title">Direzione Artistica</div>
+          <p class="item-text">
+            Coerenza estetica e narrativa: sound, visual, scelte, release. Costruiamo un’identità
+            riconoscibile e sostenibile nel tempo.
+          </p>
+        </div>
+
+        <div class="item">
+          <div class="item-title">Progetti Culturali</div>
+          <p class="item-text">
+            Interventi e format site-specific tra suono, spazio e cultura urbana.
+            Lavoriamo con realtà locali per trasformare luoghi in esperienza.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="foot">
+        Per collaborazioni: <a href="contatto.html">contatto</a>
+      </div>
+
+    </section>
+  </main>
+</body>
+</html>
 

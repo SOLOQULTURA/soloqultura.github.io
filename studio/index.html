@@ -49,14 +49,19 @@
     }
 
     /* ✅ BACKGROUND FOTO SFIOCATA (cinematic) */
-    body::before{
-      content:"";
-      position:fixed;
-      inset:-20px;
-      background-image:url("../images/studio-bg.jpeg");
-      background-size:cover;
-      background-position:center;
-      filter: blur(14px) grayscale(100%);
+   body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+
+  background:
+    linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+    url("../images/studio-bg.jpeg") center center / cover no-repeat;
+
+  filter: blur(6px);
+}
+
       opacity:0.22;
       transform:scale(1.08);
       pointer-events:none;

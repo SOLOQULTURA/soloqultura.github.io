@@ -1,1 +1,240 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio — SOLOQULTURA</title>
+
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="SOLOQULTURA STUDIO — Produzione sonora indipendente." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --white:#fff;
+      --muted:rgba(255,255,255,0.75);
+      --line:rgba(255,255,255,0.18);
+      --panel:rgba(0,0,0,0.55);
+      --panel2:rgba(0,0,0,0.65);
+    }
+
+    *{box-sizing:border-box;}
+
+    html,body{
+      margin:0;
+      padding:0;
+      background:#000;
+      color:#fff;
+      font-family:Inter, system-ui, -apple-system, sans-serif;
+      overflow-x:hidden;
+    }
+
+    /* BACKGROUND IMMAGINE */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+
+  background:
+    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)),
+    url("/images/studio-bg.jpeg") center center / cover no-repeat;
+
+  filter: blur(4px);
+  transform: scale(1.08);
+}
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      background:radial-gradient(ellipse at center, rgba(0,0,0,0.35), #000 75%);
+      pointer-events:none;
+    }
+
+    .back{
+      position:fixed;
+      left:18px;
+      top:18px;
+      color:#fff;
+      text-decoration:none;
+      letter-spacing:0.22em;
+      text-transform:uppercase;
+      font-size:12px;
+      padding:9px 12px;
+      border:1px solid rgba(255,255,255,0.25);
+      border-radius:999px;
+      background:rgba(0,0,0,0.6);
+      transition:all .2s ease;
+    }
+
+    .back:hover{
+      transform:translateY(-2px);
+      border-color:#fff;
+    }
+
+    .container{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:90px 20px 80px;
+      text-align:center;
+    }
+
+    .wrap{
+      width:min(1000px, 100%);
+    }
+
+    .title{
+      margin:0;
+      font-size:clamp(22px, 2.5vw, 30px);
+      font-weight:400;
+      letter-spacing:0.22em;
+      text-transform:uppercase;
+    }
+
+    .subtitle{
+      margin:12px 0 0;
+      font-size:clamp(14px, 1.4vw, 16px);
+      letter-spacing:0.14em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
+    .divider{
+      width:160px;
+      height:1px;
+      background:linear-gradient(90deg, transparent, var(--line), transparent);
+      margin:24px auto 30px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+      max-width:920px;
+      margin:0 auto;
+      text-align:left;
+    }
+
+    @media (min-width:900px){
+      .grid{ grid-template-columns:1fr 1fr; }
+    }
+
+    .card{
+      border:1px solid rgba(255,255,255,0.22);
+      background:var(--panel);
+      border-radius:16px;
+      padding:18px 20px;
+      transition:all .2s ease;
+    }
+
+    .card:hover{
+      background:var(--panel2);
+      transform:translateY(-2px);
+    }
+
+    .card h2{
+      margin:0 0 10px 0;
+      font-size:12px;
+      letter-spacing:0.24em;
+      text-transform:uppercase;
+      font-weight:500;
+    }
+
+    .tags{
+      margin:0;
+      font-size:15px;
+      line-height:1.8;
+      letter-spacing:0.02em;
+      color:rgba(255,255,255,0.9);
+    }
+
+    .cta{
+      margin:40px auto 0;
+    }
+
+    .cta a{
+      color:#fff;
+      text-decoration:none;
+      text-transform:uppercase;
+      letter-spacing:0.22em;
+      font-size:12px;
+      padding:14px 22px;
+      border:1px solid rgba(255,255,255,0.35);
+      border-radius:999px;
+      background:rgba(0,0,0,0.6);
+      transition:all .2s ease;
+      text-shadow:0 0 10px rgba(255,255,255,0.25);
+    }
+
+    .cta a:hover{
+      border-color:#fff;
+      transform:translateY(-2px);
+      text-shadow:0 0 18px rgba(255,255,255,0.35);
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <a class="back" href="index.html">← Home</a>
+
+  <main class="container">
+    <section class="wrap">
+
+      <h1 class="title">SOLOQULTURA STUDIO</h1>
+      <p class="subtitle">Produzione sonora indipendente.</p>
+
+      <div class="divider"></div>
+
+      <div class="grid">
+
+        <div class="card">
+          <h2>Produzione</h2>
+          <p class="tags">Beat · Recording · Arrangiamento</p>
+        </div>
+
+        <div class="card">
+          <h2>Mix & Master</h2>
+          <p class="tags">Mix · Master · Delivery</p>
+        </div>
+
+        <div class="card">
+          <h2>Direzione</h2>
+          <p class="tags">Identità · Strategia · Release</p>
+        </div>
+
+        <div class="card">
+          <h2>Promo</h2>
+          <p class="tags">Playlist · Pitch · Strategia</p>
+        </div>
+
+        <div class="card">
+          <h2>Visual</h2>
+          <p class="tags">Cover · Video · Visual loop</p>
+        </div>
+
+        <div class="card">
+          <h2>AI / Sperimentazione</h2>
+          <p class="tags">Concept · Motion · Interventi digitali</p>
+        </div>
+
+      </div>
+
+      <div class="cta">
+        <a href="contatti.html">CONTATTI</a>
+      </div>
+
+    </section>
+  </main>
+
+</body>
+</html>
 

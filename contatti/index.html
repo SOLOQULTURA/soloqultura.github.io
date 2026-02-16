@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contatti — SOLOQULTURA</title>
 
   <link rel="icon" type="image/png" href="/images/favicon.png">
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Contatta SOLOQULTURA." />
+  <meta name="description" content="Contatti SOLOQULTURA — Instagram ed email ufficiale.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,8 +15,8 @@
   <style>
     :root{
       --bg:#000;
-      --white:#fff;
-      --line:rgba(255,255,255,0.18);
+      --white:#ffffff;
+      --line:rgba(255,255,255,0.25);
     }
 
     *{box-sizing:border-box;}
@@ -25,10 +24,9 @@
     html,body{
       margin:0;
       padding:0;
-      background:var(--bg);
-      color:var(--white);
+      background:#000;
+      color:#fff;
       font-family:Inter, system-ui, -apple-system, sans-serif;
-      overflow-x:hidden;
     }
 
     body::before{
@@ -37,31 +35,8 @@
       inset:0;
       pointer-events:none;
       background:
-        radial-gradient(900px 600px at 50% 25%, rgba(255,255,255,0.03), transparent 65%),
-        radial-gradient(1400px 1000px at 50% 90%, rgba(0,0,0,0.85), #000 70%);
-    }
-
-    .back{
-      position:fixed;
-      left:18px;
-      top:18px;
-      color:#fff;
-      text-decoration:none;
-      letter-spacing:0.22em;
-      text-transform:uppercase;
-      font-size:12px;
-      opacity:0.9;
-      padding:8px 12px;
-      border:1px solid rgba(255,255,255,0.25);
-      border-radius:999px;
-      background:rgba(255,255,255,0.04);
-      transition:opacity .2s ease, transform .2s ease, border-color .2s ease;
-    }
-
-    .back:hover{
-      opacity:1;
-      transform:translateY(-2px);
-      border-color:#fff;
+        radial-gradient(900px 600px at 50% 30%, rgba(255,255,255,0.04), transparent 65%),
+        radial-gradient(1400px 1000px at 50% 85%, rgba(0,0,0,0.85), #000 70%);
     }
 
     .container{
@@ -69,55 +44,75 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:80px 20px;
       text-align:center;
+      padding:40px 20px;
     }
 
     .wrap{
       display:flex;
       flex-direction:column;
-      gap:22px;
       align-items:center;
+      gap:30px;
+      max-width:600px;
+      animation:fade 1.2s ease forwards;
+      opacity:0;
+      transform:translateY(10px);
+    }
+
+    @keyframes fade{
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
     }
 
     h1{
-      margin:0;
       font-size:14px;
-      letter-spacing:0.30em;
+      letter-spacing:0.35em;
       text-transform:uppercase;
       font-weight:400;
+      color:#ffffff; /* BIANCO PIENO */
+      margin:0;
     }
 
     .divider{
-      width:140px;
+      width:120px;
       height:1px;
       background:linear-gradient(90deg, transparent, var(--line), transparent);
     }
 
-    .links{
-      display:flex;
-      flex-direction:column;
-      gap:16px;
-      margin-top:8px;
-    }
-
-    .links a{
-      color:#fff;
-      text-decoration:none;
-      text-transform:uppercase;
-      letter-spacing:0.22em;
-      font-size:12px;
-      padding:12px 16px;
-      border:1px solid rgba(255,255,255,0.25);
+    .btn{
+      display:inline-block;
+      padding:12px 26px;
       border-radius:999px;
+      border:1px solid rgba(255,255,255,0.35);
+      text-decoration:none;
+      color:#ffffff;
+      font-size:12px;
+      letter-spacing:0.25em;
+      text-transform:uppercase;
+      transition:all .25s ease;
       background:rgba(255,255,255,0.04);
-      transition:transform .2s ease, border-color .2s ease, opacity .2s ease;
-      opacity:0.95;
     }
 
-    .links a:hover{
+    .btn:hover{
       transform:translateY(-2px);
-      border-color:#fff;
+      border-color:#ffffff;
+      background:rgba(255,255,255,0.08);
+    }
+
+    .home-link{
+      margin-top:30px;
+      font-size:11px;
+      letter-spacing:0.25em;
+      text-transform:uppercase;
+      color:#ffffff;
+      text-decoration:none;
+      opacity:0.8;
+      transition:opacity .2s ease;
+    }
+
+    .home-link:hover{
       opacity:1;
     }
 
@@ -126,26 +121,26 @@
 
 <body>
 
-  <!-- HOME CORRETTO -->
-  <a class="back" href="/">← Home</a>
-
   <main class="container">
-    <section class="wrap">
+    <div class="wrap">
 
       <h1>CONTATTI</h1>
+
       <div class="divider"></div>
 
-      <div class="links">
-        <a href="https://instagram.com/solo.qultura" target="_blank">
-          Instagram
-        </a>
+      <a href="https://instagram.com/solo.qultura" target="_blank" class="btn">
+        Instagram
+      </a>
 
-        <a href="mailto:soloqulturalab@gmail.com">
-          Email
-        </a>
-      </div>
+      <a href="mailto:soloqulturalab@gmail.com" class="btn">
+        Email
+      </a>
 
-    </section>
+      <a href="/" class="home-link">
+        HOME
+      </a>
+
+    </div>
   </main>
 
 </body>

@@ -34,18 +34,19 @@
     }
 
     /* BACKGROUND IMMAGINE */
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      z-index:-2;
-      background:
-        linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.88)),
-        url("images/studio-bg.jpeg") center center / contain no-repeat;
-      background-color:#000;
-      filter: blur(6px);
-      transform: scale(1.05);
-    }
+ body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:
+    linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.88)),
+    url("/images/studio-bg.jpeg") center center / contain no-repeat;
+  background-color:#000;
+  filter: blur(6px);
+  transform: scale(1.05);
+}
+
 
     body::after{
       content:"";

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Studio — SOLOQULTURA</title>
 
-  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="icon" type="image/png" href="/images/favicon.png">
   <meta name="theme-color" content="#000000" />
   <meta name="description" content="SOLOQULTURA STUDIO — Produzione sonora indipendente." />
 
@@ -31,35 +31,36 @@
       color:#fff;
       font-family:Inter, system-ui, -apple-system, sans-serif;
       overflow-x:hidden;
+      position:relative;
     }
 
-    /* BACKGROUND IMMAGINE */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-2;
-
-  background:
-    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)),
-    url("/images/studio-bg.jpeg") center center / cover no-repeat;
-
-  filter: blur(4px);
-  transform: scale(1.08);
-}
-    body::after{
-      content:"";
+    /* SFONDO IMMAGINE (stabile) */
+    .bg-image{
       position:fixed;
       inset:0;
-      z-index:-1;
-      background:radial-gradient(ellipse at center, rgba(0,0,0,0.35), #000 75%);
+      background:
+        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.86)),
+        url("/images/studio-bg.jpeg") center center / cover no-repeat;
+      filter: blur(4px);
+      transform: scale(1.08);
+      z-index:0;
+    }
+
+    /* Overlay profondità leggero */
+    .bg-vignette{
+      position:fixed;
+      inset:0;
+      background:radial-gradient(ellipse at center, rgba(0,0,0,0.18), #000 78%);
+      z-index:0;
       pointer-events:none;
     }
 
+    /* Back button */
     .back{
       position:fixed;
       left:18px;
       top:18px;
+      z-index:2;
       color:#fff;
       text-decoration:none;
       letter-spacing:0.22em;
@@ -68,7 +69,7 @@ body::before{
       padding:9px 12px;
       border:1px solid rgba(255,255,255,0.25);
       border-radius:999px;
-      background:rgba(0,0,0,0.6);
+      background:rgba(0,0,0,0.55);
       transition:all .2s ease;
     }
 
@@ -84,6 +85,8 @@ body::before{
       justify-content:center;
       padding:90px 20px 80px;
       text-align:center;
+      position:relative;
+      z-index:1;
     }
 
     .wrap{
@@ -168,7 +171,7 @@ body::before{
       padding:14px 22px;
       border:1px solid rgba(255,255,255,0.35);
       border-radius:999px;
-      background:rgba(0,0,0,0.6);
+      background:rgba(0,0,0,0.55);
       transition:all .2s ease;
       text-shadow:0 0 10px rgba(255,255,255,0.25);
     }
@@ -179,12 +182,21 @@ body::before{
       text-shadow:0 0 18px rgba(255,255,255,0.35);
     }
 
+    @media (prefers-reduced-motion: reduce){
+      .card:hover, .back:hover, .cta a:hover{ transform:none; }
+      .bg-image{ filter:none; transform:none; }
+    }
   </style>
 </head>
 
 <body>
 
-  <a class="back" href="index.html">← Home</a>
+  <!-- background -->
+  <div class="bg-image"></div>
+  <div class="bg-vignette"></div>
+
+  <!-- home -->
+  <a class="back" href="/">← Home</a>
 
   <main class="container">
     <section class="wrap">
@@ -229,7 +241,7 @@ body::before{
       </div>
 
       <div class="cta">
-        <a href="contatti.html">CONTATTI</a>
+        <a href="/contatti/">CONTATTI</a>
       </div>
 
     </section>
@@ -237,4 +249,3 @@ body::before{
 
 </body>
 </html>
-

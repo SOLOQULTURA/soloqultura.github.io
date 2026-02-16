@@ -3,11 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Studio — SOLOQULTURA</title>
 
-  <link rel="icon" type="image/png" href="/images/favicon.png">
+  <title>Studio — SOLOQULTURA | Produzione, Mix & Master, Visual, Strategia</title>
+  <meta name="description" content="SOLOQULTURA Studio. Produzione, mix & master, visual, AI / sperimentazione, promo e strategia." />
   <meta name="theme-color" content="#000000" />
-  <meta name="description" content="SOLOQULTURA STUDIO — Produzione sonora indipendente." />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="canonical" href="https://www.soloqultura.com/studio/" />
+
+  <link rel="icon" type="image/png" href="../images/favicon.png">
+  <link rel="apple-touch-icon" href="../images/favicon.png">
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="SOLOQULTURA Studio" />
+  <meta property="og:description" content="Produzione, mix & master, visual, strategia, promo, sperimentazione." />
+  <meta property="og:url" content="https://www.soloqultura.com/studio/" />
+  <meta property="og:image" content="https://www.soloqultura.com/images/social-preview.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SOLOQULTURA Studio" />
+  <meta name="twitter:description" content="Produzione, mix & master, visual, strategia, promo, sperimentazione." />
+  <meta name="twitter:image" content="https://www.soloqultura.com/images/social-preview.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,67 +31,46 @@
 
   <style>
     :root{
+      --bg:#000;
       --white:#fff;
-      --muted:rgba(255,255,255,0.75);
-      --line:rgba(255,255,255,0.18);
-      --panel:rgba(0,0,0,0.55);
-      --panel2:rgba(0,0,0,0.65);
+      --line:rgba(255,255,255,0.22);
+      --card:rgba(0,0,0,0.48);
     }
 
-    *{box-sizing:border-box;}
+    *{ box-sizing:border-box; }
 
     html,body{
       margin:0;
       padding:0;
-      background:#000;
-      color:#fff;
+      background:var(--bg);
+      color:var(--white);
       font-family:Inter, system-ui, -apple-system, sans-serif;
       overflow-x:hidden;
-      position:relative;
     }
 
-    /* SFONDO IMMAGINE (stabile) */
-    .bg-image{
+    /* ✅ BACKGROUND FOTO SFIOCATA (cinematic) */
+    body::before{
+      content:"";
       position:fixed;
-      inset:0;
-      background:
-        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.86)),
-        url("/images/studio-bg.jpeg") center center / cover no-repeat;
-      filter: blur(4px);
-      transform: scale(1.08);
-      z-index:0;
-    }
-
-    /* Overlay profondità leggero */
-    .bg-vignette{
-      position:fixed;
-      inset:0;
-      background:radial-gradient(ellipse at center, rgba(0,0,0,0.18), #000 78%);
-      z-index:0;
+      inset:-20px;
+      background-image:url("../images/studio-bg.jpeg");
+      background-size:cover;
+      background-position:center;
+      filter: blur(14px) grayscale(100%);
+      opacity:0.22;
+      transform:scale(1.08);
       pointer-events:none;
     }
 
-    /* Back button */
-    .back{
+    /* overlay per mantenere contrasto */
+    body::after{
+      content:"";
       position:fixed;
-      left:18px;
-      top:18px;
-      z-index:2;
-      color:#fff;
-      text-decoration:none;
-      letter-spacing:0.22em;
-      text-transform:uppercase;
-      font-size:12px;
-      padding:9px 12px;
-      border:1px solid rgba(255,255,255,0.25);
-      border-radius:999px;
-      background:rgba(0,0,0,0.55);
-      transition:all .2s ease;
-    }
-
-    .back:hover{
-      transform:translateY(-2px);
-      border-color:#fff;
+      inset:0;
+      background:
+        radial-gradient(900px 600px at 50% 20%, rgba(255,255,255,0.06), transparent 65%),
+        radial-gradient(1200px 900px at 50% 70%, rgba(0,0,0,0.90), #000 75%);
+      pointer-events:none;
     }
 
     .container{
@@ -83,169 +78,180 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:90px 20px 80px;
-      text-align:center;
+      padding:56px 20px;
       position:relative;
       z-index:1;
     }
 
     .wrap{
-      width:min(1000px, 100%);
+      width:min(980px, 100%);
+      text-align:center;
+      opacity:0;
+      transform:translateY(10px);
+      animation:fadeUp 1.1s cubic-bezier(.22,.61,.36,1) forwards;
     }
 
-    .title{
+    @keyframes fadeUp{
+      to{ opacity:1; transform:translateY(0); }
+    }
+
+    h1{
       margin:0;
-      font-size:clamp(22px, 2.5vw, 30px);
-      font-weight:400;
-      letter-spacing:0.22em;
-      text-transform:uppercase;
-    }
-
-    .subtitle{
-      margin:12px 0 0;
-      font-size:clamp(14px, 1.4vw, 16px);
-      letter-spacing:0.14em;
-      text-transform:uppercase;
-      color:var(--muted);
-    }
-
-    .divider{
-      width:160px;
-      height:1px;
-      background:linear-gradient(90deg, transparent, var(--line), transparent);
-      margin:24px auto 30px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:14px;
-      max-width:920px;
-      margin:0 auto;
-      text-align:left;
-    }
-
-    @media (min-width:900px){
-      .grid{ grid-template-columns:1fr 1fr; }
-    }
-
-    .card{
-      border:1px solid rgba(255,255,255,0.22);
-      background:var(--panel);
-      border-radius:16px;
-      padding:18px 20px;
-      transition:all .2s ease;
-    }
-
-    .card:hover{
-      background:var(--panel2);
-      transform:translateY(-2px);
-    }
-
-    .card h2{
-      margin:0 0 10px 0;
-      font-size:12px;
-      letter-spacing:0.24em;
+      font-size: clamp(20px, 2.4vw, 28px);
+      letter-spacing:0.35em;
       text-transform:uppercase;
       font-weight:500;
     }
 
-    .tags{
-      margin:0;
-      font-size:15px;
-      line-height:1.8;
+    .sub{
+      margin-top:10px;
+      font-size:12px;
+      letter-spacing:0.28em;
+      text-transform:uppercase;
+      opacity:0.9;
+    }
+
+    .grid{
+      margin-top:34px;
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:18px;
+    }
+
+    @media (max-width: 760px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    /* ✅ CARD più “premium”: leggermente più grandi e leggibili */
+    .card{
+      text-align:left;
+      padding:18px 18px;
+      border-radius:16px;
+      background: var(--card);
+      border:1px solid var(--line);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    .card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.36);
+      background: rgba(0,0,0,0.56);
+    }
+
+    .kicker{
+      font-size:11px;
+      letter-spacing:0.30em;
+      text-transform:uppercase;
+      opacity:0.95;
+      font-weight:500;
+    }
+
+    .text{
+      margin-top:10px;
+      font-size:15px;            /* ✅ + leggibilità */
       letter-spacing:0.02em;
-      color:rgba(255,255,255,0.9);
+      opacity:0.95;
     }
 
     .cta{
-      margin:40px auto 0;
+      margin-top:26px;
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
     }
 
-    .cta a{
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 20px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.35);
+      background:rgba(255,255,255,0.05);
       color:#fff;
       text-decoration:none;
-      text-transform:uppercase;
-      letter-spacing:0.22em;
       font-size:12px;
-      padding:14px 22px;
-      border:1px solid rgba(255,255,255,0.35);
-      border-radius:999px;
-      background:rgba(0,0,0,0.55);
-      transition:all .2s ease;
-      text-shadow:0 0 10px rgba(255,255,255,0.25);
+      letter-spacing:0.28em;
+      text-transform:uppercase;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
     }
 
-    .cta a:hover{
+    .btn:hover{
+      transform: translateY(-2px);
+      background:rgba(255,255,255,0.08);
       border-color:#fff;
-      transform:translateY(-2px);
-      text-shadow:0 0 18px rgba(255,255,255,0.35);
     }
 
-    @media (prefers-reduced-motion: reduce){
-      .card:hover, .back:hover, .cta a:hover{ transform:none; }
-      .bg-image{ filter:none; transform:none; }
+    .back{
+      margin-top:18px;
+      display:inline-block;
+      font-size:11px;
+      letter-spacing:0.24em;
+      text-transform:uppercase;
+      opacity:0.8;
+      color:#fff;
+      text-decoration:none;
     }
+    .back:hover{ opacity:1; }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"SOLOQULTURA Studio",
+    "url":"https://www.soloqultura.com/studio/"
+  }
+  </script>
 </head>
 
 <body>
-
-  <!-- background -->
-  <div class="bg-image"></div>
-  <div class="bg-vignette"></div>
-
-  <!-- home -->
-  <a class="back" href="/">← Home</a>
-
   <main class="container">
     <section class="wrap">
-
-      <h1 class="title">SOLOQULTURA STUDIO</h1>
-      <p class="subtitle">Produzione sonora indipendente.</p>
-
-      <div class="divider"></div>
+      <h1>SOLOQULTURA STUDIO</h1>
+      <div class="sub">PRODUZIONE SONORA INDIPENDENTE.</div>
 
       <div class="grid">
-
         <div class="card">
-          <h2>Produzione</h2>
-          <p class="tags">Beat · Recording · Arrangiamento</p>
+          <div class="kicker">PRODUZIONE</div>
+          <div class="text">Beat · Recording · Arrangiamento</div>
         </div>
 
         <div class="card">
-          <h2>Mix & Master</h2>
-          <p class="tags">Mix · Master · Delivery</p>
+          <div class="kicker">MIX &amp; MASTER</div>
+          <div class="text">Mix · Master · Delivery</div>
         </div>
 
         <div class="card">
-          <h2>Direzione</h2>
-          <p class="tags">Identità · Strategia · Release</p>
+          <div class="kicker">DIREZIONE</div>
+          <div class="text">Identità · Strategia · Release</div>
         </div>
 
         <div class="card">
-          <h2>Promo</h2>
-          <p class="tags">Playlist · Pitch · Strategia</p>
+          <div class="kicker">PROMO</div>
+          <div class="text">Playlist · Pitch · Strategia</div>
         </div>
 
         <div class="card">
-          <h2>Visual</h2>
-          <p class="tags">Cover · Video · Visual loop</p>
+          <div class="kicker">VISUAL</div>
+          <div class="text">Cover · Video · Visual loop</div>
         </div>
 
         <div class="card">
-          <h2>AI / Sperimentazione</h2>
-          <p class="tags">Concept · Motion · Interventi digitali</p>
+          <div class="kicker">AI / SPERIMENTAZIONE</div>
+          <div class="text">Concept · Motion · Interventi digitali</div>
         </div>
-
       </div>
 
       <div class="cta">
-        <a href="/contatti/">CONTATTI</a>
+        <a class="btn" href="/contatti/">CONTATTI</a>
       </div>
 
+      <a class="back" href="/">HOME</a>
     </section>
   </main>
-
 </body>
 </html>

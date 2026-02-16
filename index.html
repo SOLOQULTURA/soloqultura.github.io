@@ -4,56 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>SOLOQULTURA</title>
-  <meta name="description" content="SOLOQULTURA — Suono. Qultura. Futuro." />
+  <title>SOLOQULTURA — Studio creativo | Produzione sonora, visual, strategia</title>
+  <meta name="description" content="SOLOQULTURA — studio creativo indipendente. Produzione sonora, visual e strategia. Suono. Qultura. Futuro." />
   <meta name="theme-color" content="#000000" />
+  <meta name="robots" content="index, follow" />
 
-  <!-- Canonical (molto importante per Google) -->
+  <!-- Canonical -->
   <link rel="canonical" href="https://www.soloqultura.com/" />
 
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="SOLOQULTURA">
-  <meta property="og:description" content="SUONO. QULTURA. FUTURO.">
-  <meta property="og:image" content="https://www.soloqultura.com/images/social-preview.png">
-  <meta property="og:image:secure_url" content="https://www.soloqultura.com/images/social-preview.png">
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:url" content="https://www.soloqultura.com/">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="SOLOQULTURA — Studio creativo" />
+  <meta property="og:description" content="Produzione sonora, visual e strategia. Suono. Qultura. Futuro." />
+  <meta property="og:url" content="https://www.soloqultura.com/" />
+  <meta property="og:image" content="https://www.soloqultura.com/images/social-preview.png" />
 
-  <!-- Google Verification -->
-  <meta name="google-site-verification" content="qh_Bh2l8vh5yyb0r0-qEk8X5JzGL40YWVfH4GUEg8Gs" />
-
-  <!-- Structured data: WebSite (aiuta site name) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "SOLOQULTURA",
-    "alternateName": ["SOLOQULTURA STUDIO", "SOLOQULTURA LAB"],
-    "url": "https://www.soloqultura.com/"
-  }
-  </script>
-
-  <!-- Structured data: Organization -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "SOLOQULTURA",
-    "url": "https://www.soloqultura.com/",
-    "logo": "https://www.soloqultura.com/images/new-logo.png",
-    "sameAs": [
-      "https://instagram.com/solo.qultura",
-      "https://youtube.com/@soloqultura",
-      "https://open.spotify.com/intl-it/artist/0lZbzkTC3h5CpS736vUP4f"
-    ]
-  }
-  </script>
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SOLOQULTURA — Studio creativo" />
+  <meta name="twitter:description" content="Produzione sonora, visual e strategia. Suono. Qultura. Futuro." />
+  <meta name="twitter:image" content="https://www.soloqultura.com/images/social-preview.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -102,7 +76,7 @@
       display:flex;
       flex-direction:column;
       align-items:center;
-      gap:18px;
+      gap:16px;
       max-width:900px;
       opacity:0;
       transform:translateY(12px);
@@ -116,10 +90,7 @@
     .main-logo{
       width:clamp(300px, 42vw, 720px);
       height:auto;
-      filter:
-        brightness(1.06)
-        contrast(1.02)
-        drop-shadow(0 0 44px rgba(255,255,255,0.06));
+      filter: brightness(1.06) contrast(1.02) drop-shadow(0 0 44px rgba(255,255,255,0.06));
     }
 
     .tagline{
@@ -129,18 +100,26 @@
       font-weight:400;
     }
 
+    /* ✅ MICRO-RIGA DEFINIZIONE (MINIMAL) */
+    .micro{
+      margin-top:4px;
+      font-size:12px;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      opacity:0.78;
+    }
+
     .divider{
       width:140px;
       height:1px;
       background:linear-gradient(90deg, transparent, var(--line), transparent);
-      margin:6px 0 10px;
+      margin:8px 0 10px;
     }
 
-    /* MINI NAV (resta bianca sempre) */
     .mini-nav{
       display:flex;
       gap:32px;
-      margin-top:8px;
+      margin-top:6px;
       justify-content:center;
     }
 
@@ -153,9 +132,9 @@
       font-weight:400;
       position:relative;
       padding:6px 2px;
-      opacity:1;                 /* sempre bianco */
-      transition:transform .25s ease, text-shadow .25s ease;
-      text-shadow:0 0 10px rgba(255,255,255,0.18);
+      opacity:0.95;
+      transition:all .25s ease;
+      text-shadow:0 0 8px rgba(255,255,255,0.25);
     }
 
     .mini-nav a::after{
@@ -169,12 +148,12 @@
       transform:scaleX(0);
       transform-origin:center;
       transition:transform .25s ease;
-      opacity:0.6;
     }
 
     .mini-nav a:hover{
+      opacity:1;
       transform:translateY(-2px);
-      text-shadow:0 0 16px rgba(255,255,255,0.35);
+      text-shadow:0 0 14px rgba(255,255,255,0.45);
     }
 
     .mini-nav a:hover::after{
@@ -217,6 +196,22 @@
       text-decoration:underline;
     }
   </style>
+
+  <!-- ✅ JSON-LD (PRO, invisibile) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"SOLOQULTURA",
+    "url":"https://www.soloqultura.com/",
+    "email":"soloqulturalab@gmail.com",
+    "sameAs":[
+      "https://instagram.com/solo.qultura",
+      "https://youtube.com/@soloqultura"
+    ],
+    "logo":"https://www.soloqultura.com/images/new-logo.png"
+  }
+  </script>
 </head>
 
 <body>
@@ -227,22 +222,23 @@
 
       <div class="tagline">SUONO. QULTURA. FUTURO.</div>
 
+      <div class="micro">Produzione sonora · Visual · Strategia</div>
+
       <div class="divider"></div>
 
-      <!-- Link a /studio/ e /contatti/ -->
       <nav class="mini-nav">
         <a href="/studio/">STUDIO</a>
         <a href="/contatti/">CONTATTI</a>
       </nav>
 
       <div class="social">
-        <a href="https://instagram.com/solo.qultura" target="_blank" rel="noopener noreferrer">
+        <a href="https://instagram.com/solo.qultura" target="_blank" rel="noopener">
           <i class="fab fa-instagram"></i>
         </a>
-        <a href="https://youtube.com/@soloqultura" target="_blank" rel="noopener noreferrer">
+        <a href="https://youtube.com/@soloqultura" target="_blank" rel="noopener">
           <i class="fab fa-youtube"></i>
         </a>
-        <a href="https://open.spotify.com/intl-it/artist/0lZbzkTC3h5CpS736vUP4f" target="_blank" rel="noopener noreferrer">
+        <a href="https://open.spotify.com" target="_blank" rel="noopener">
           <i class="fab fa-spotify"></i>
         </a>
       </div>
@@ -255,6 +251,8 @@
   </main>
 </body>
 </html>
+
+
 
 
 

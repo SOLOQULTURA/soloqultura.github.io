@@ -4,30 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>SOLOQULTURA — Studio creativo | Produzione sonora, visual, strategia</title>
-  <meta name="description" content="SOLOQULTURA — studio creativo indipendente. Produzione sonora, visual e strategia. Suono. Qultura. Futuro." />
-  <meta name="theme-color" content="#000000" />
+  <!-- SEO -->
+  <title>SOLOQULTURA — Studio creativo indipendente</title>
+  <meta name="description" content="SOLOQULTURA è studio creativo indipendente. Produzione musicale, mix & master, visual e strategia per progetti culturali e release." />
   <meta name="robots" content="index, follow" />
-
-  <!-- Canonical -->
   <link rel="canonical" href="https://www.soloqultura.com/" />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="apple-touch-icon" href="images/favicon.png">
+  <meta name="theme-color" content="#000000" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="SOLOQULTURA — Studio creativo" />
-  <meta property="og:description" content="Produzione sonora, visual e strategia. Suono. Qultura. Futuro." />
+  <meta property="og:description" content="Produzione musicale, visual e strategia. Suono. Qultura. Futuro." />
   <meta property="og:url" content="https://www.soloqultura.com/" />
   <meta property="og:image" content="https://www.soloqultura.com/images/social-preview.png" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="SOLOQULTURA — Studio creativo" />
-  <meta name="twitter:description" content="Produzione sonora, visual e strategia. Suono. Qultura. Futuro." />
+  <meta name="twitter:description" content="Produzione musicale, visual e strategia." />
   <meta name="twitter:image" content="https://www.soloqultura.com/images/social-preview.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -84,13 +83,19 @@
     }
 
     @keyframes cinematicFade{
-      to{ opacity:1; transform:translateY(0); }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
     }
 
     .main-logo{
       width:clamp(300px, 42vw, 720px);
       height:auto;
-      filter: brightness(1.06) contrast(1.02) drop-shadow(0 0 44px rgba(255,255,255,0.06));
+      filter:
+        brightness(1.06)
+        contrast(1.02)
+        drop-shadow(0 0 44px rgba(255,255,255,0.06));
     }
 
     .tagline{
@@ -100,7 +105,7 @@
       font-weight:400;
     }
 
-    /* ✅ MICRO-RIGA DEFINIZIONE (MINIMAL) */
+    /* Micro definizione studio */
     .micro{
       margin-top:4px;
       font-size:12px;
@@ -195,9 +200,23 @@
       color:#ffffff;
       text-decoration:underline;
     }
+
+    /* SEO footer discreto */
+    .seo-footer{
+      margin-top:18px;
+      max-width:720px;
+      font-size:11px;
+      line-height:1.5;
+      letter-spacing:0.04em;
+      opacity:0.45;
+    }
+
+    .seo-footer strong{
+      font-weight:500;
+    }
   </style>
 
-  <!-- ✅ JSON-LD (PRO, invisibile) -->
+  <!-- JSON-LD -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -247,10 +266,17 @@
         <a href="mailto:soloqulturalab@gmail.com">soloqulturalab@gmail.com</a>
       </div>
 
+      <div class="seo-footer">
+        <strong>SOLOQULTURA</strong> è studio creativo indipendente.
+        Produzione musicale, mix &amp; master, visual e strategia per progetti culturali e release.
+      </div>
+
     </div>
   </main>
 </body>
 </html>
+
+
 
 
 

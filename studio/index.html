@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
@@ -42,18 +42,25 @@
     html,body{
       margin:0;
       padding:0;
-      background:#000;
+      background: var(--bg);
       color:var(--white);
       font-family:Inter, system-ui, -apple-system, sans-serif;
       overflow-x:hidden;
+      min-height:100%;
     }
 
-    /* ✅ BACKGROUND DEFINITIVO (GitHub safe) */
+    /* ✅ stacking context pulito: niente z-index negativi */
+    body{
+      position:relative;
+      isolation:isolate; /* IMPORTANTISSIMO: evita bug di stacking */
+    }
+
+    /* ✅ BACKGROUND FOTO SFIOCATA (stabile) */
     body::before{
       content:"";
       position:fixed;
       inset:0;
-      z-index:-2;
+      z-index:0;
 
       background:
         linear-gradient(rgba(0,0,0,0.70), rgba(0,0,0,0.70)),
@@ -65,11 +72,12 @@
       pointer-events:none;
     }
 
+    /* overlay per mantenere contrasto */
     body::after{
       content:"";
       position:fixed;
       inset:0;
-      z-index:-1;
+      z-index:1;
 
       background:
         radial-gradient(900px 600px at 50% 20%, rgba(255,255,255,0.05), transparent 65%),
@@ -84,7 +92,7 @@
       justify-content:center;
       padding:56px 20px;
       position:relative;
-      z-index:1;
+      z-index:2; /* ✅ contenuto sopra */
     }
 
     .wrap{
@@ -201,6 +209,15 @@
 
     .back:hover{ opacity:1; }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"SOLOQULTURA Studio",
+    "url":"https://www.soloqultura.com/studio/"
+  }
+  </script>
 </head>
 
 <body>
@@ -216,7 +233,7 @@
         </div>
 
         <div class="card">
-          <div class="kicker">MIX & MASTER</div>
+          <div class="kicker">MIX &amp; MASTER</div>
           <div class="text">Mix · Master · Delivery</div>
         </div>
 

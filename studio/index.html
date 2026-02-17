@@ -34,7 +34,7 @@
       --bg:#000;
       --white:#fff;
       --line:rgba(255,255,255,0.22);
-      --card:rgba(0,0,0,0.48);
+      --card:rgba(0,0,0,0.46);
     }
 
     *{ box-sizing:border-box; }
@@ -49,13 +49,12 @@
       min-height:100%;
     }
 
-    /* ✅ stacking stabile */
     body{
       position:relative;
       isolation:isolate;
     }
 
-    /* ✅ BACKGROUND FOTO: URL ASSOLUTO (zero dubbi) */
+    /* ✅ BACKGROUND FOTO (più visibile) */
     body::before{
       content:"";
       position:fixed;
@@ -64,7 +63,8 @@
       pointer-events:none;
 
       background-image:
-        linear-gradient(rgba(0,0,0,0.62), rgba(0,0,0,0.62)),
+        /* meno nero sopra */
+        linear-gradient(rgba(0,0,0,0.42), rgba(0,0,0,0.42)),
         url("https://www.soloqultura.com/images/studio-bg.jpeg");
 
       background-position: center center, center center;
@@ -72,12 +72,12 @@
       background-repeat: no-repeat, no-repeat;
       background-attachment: fixed, fixed;
 
-      filter: blur(6px);
-      opacity:0.55;          /* ✅ più visibile (poi puoi scendere a 0.30/0.35) */
-      transform: scale(1.08);
+      filter: blur(5px);
+      opacity:0.85;
+      transform: scale(1.06);
     }
 
-    /* overlay di contrasto */
+    /* overlay: un filo più leggero */
     body::after{
       content:"";
       position:fixed;
@@ -86,8 +86,8 @@
       pointer-events:none;
 
       background:
-        radial-gradient(900px 600px at 50% 20%, rgba(255,255,255,0.05), transparent 65%),
-        radial-gradient(1200px 900px at 50% 70%, rgba(0,0,0,0.88), #000 75%);
+        radial-gradient(900px 600px at 50% 18%, rgba(255,255,255,0.06), transparent 65%),
+        radial-gradient(1200px 900px at 50% 75%, rgba(0,0,0,0.78), #000 80%);
     }
 
     .container{
@@ -125,7 +125,7 @@
       font-size:12px;
       letter-spacing:0.28em;
       text-transform:uppercase;
-      opacity:0.9;
+      opacity:0.92;
     }
 
     .grid{
@@ -145,15 +145,15 @@
       border-radius:16px;
       background: var(--card);
       border:1px solid var(--line);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       transition: transform .18s ease, border-color .18s ease, background .18s ease;
     }
 
     .card:hover{
       transform: translateY(-2px);
       border-color: rgba(255,255,255,0.36);
-      background: rgba(0,0,0,0.56);
+      background: rgba(0,0,0,0.52);
     }
 
     .kicker{
@@ -168,7 +168,7 @@
       margin-top:10px;
       font-size:15px;
       letter-spacing:0.02em;
-      opacity:0.95;
+      opacity:0.97;
     }
 
     .cta{
@@ -207,7 +207,7 @@
       font-size:11px;
       letter-spacing:0.24em;
       text-transform:uppercase;
-      opacity:0.8;
+      opacity:0.85;
       color:#fff;
       text-decoration:none;
     }

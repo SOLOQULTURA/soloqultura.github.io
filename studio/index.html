@@ -11,8 +11,8 @@
 
   <link rel="canonical" href="https://www.soloqultura.com/studio/" />
 
-  <link rel="icon" type="image/png" href="../images/favicon.png">
-  <link rel="apple-touch-icon" href="../images/favicon.png">
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+  <link rel="apple-touch-icon" href="/images/favicon.png">
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="SOLOQULTURA Studio" />
@@ -42,13 +42,13 @@
     html,body{
       margin:0;
       padding:0;
-      background:var(--bg);
+      background:#000;
       color:var(--white);
       font-family:Inter, system-ui, -apple-system, sans-serif;
       overflow-x:hidden;
     }
 
-    /* ✅ BACKGROUND FOTO SFIOCATA (FIX DEFINITIVO) */
+    /* ✅ BACKGROUND DEFINITIVO (GitHub safe) */
     body::before{
       content:"";
       position:fixed;
@@ -56,16 +56,15 @@
       z-index:-2;
 
       background:
-        linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
-        url("../images/studio-bg.jpeg") center center / cover no-repeat;
+        linear-gradient(rgba(0,0,0,0.70), rgba(0,0,0,0.70)),
+        url("/images/studio-bg.jpeg") center center / cover no-repeat;
 
       filter: blur(6px);
-      opacity:0.22;
+      opacity:0.35;
       transform:scale(1.08);
       pointer-events:none;
     }
 
-    /* overlay per mantenere contrasto */
     body::after{
       content:"";
       position:fixed;
@@ -73,7 +72,7 @@
       z-index:-1;
 
       background:
-        radial-gradient(900px 600px at 50% 20%, rgba(255,255,255,0.06), transparent 65%),
+        radial-gradient(900px 600px at 50% 20%, rgba(255,255,255,0.05), transparent 65%),
         radial-gradient(1200px 900px at 50% 70%, rgba(0,0,0,0.90), #000 75%);
       pointer-events:none;
     }
@@ -129,7 +128,7 @@
 
     .card{
       text-align:left;
-      padding:18px 18px;
+      padding:18px;
       border-radius:16px;
       background: var(--card);
       border:1px solid var(--line);
@@ -199,17 +198,9 @@
       color:#fff;
       text-decoration:none;
     }
+
     .back:hover{ opacity:1; }
   </style>
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebPage",
-    "name":"SOLOQULTURA Studio",
-    "url":"https://www.soloqultura.com/studio/"
-  }
-  </script>
 </head>
 
 <body>
@@ -225,7 +216,7 @@
         </div>
 
         <div class="card">
-          <div class="kicker">MIX &amp; MASTER</div>
+          <div class="kicker">MIX & MASTER</div>
           <div class="text">Mix · Master · Delivery</div>
         </div>
 

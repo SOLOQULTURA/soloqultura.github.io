@@ -205,6 +205,19 @@
     .seo-footer strong{
       font-weight:500;
     }
+
+    /* H1 SEO invisibile (non cambia la grafica) */
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
   </style>
 
   <!-- JSON-LD -->
@@ -217,7 +230,8 @@
     "email":"soloqulturalab@gmail.com",
     "sameAs":[
       "https://instagram.com/solo.qultura",
-      "https://youtube.com/@soloqultura"
+      "https://youtube.com/@soloqultura",
+      "https://open.spotify.com/intl-it/artist/0lZbzkTC3h5CpS736vUP4f"
     ],
     "logo":"https://www.soloqultura.com/images/new-logo.png"
   }
@@ -227,6 +241,9 @@
 <body>
   <main class="container">
     <div class="wrap">
+
+      <!-- ✅ H1 per Google (invisibile) -->
+      <h1 class="sr-only">SOLOQULTURA</h1>
 
       <img src="images/new-logo.png" alt="SOLOQULTURA" class="main-logo">
 
@@ -240,13 +257,18 @@
       </nav>
 
       <div class="social">
-        <a href="https://instagram.com/solo.qultura" target="_blank" rel="noopener">
+        <a href="https://instagram.com/solo.qultura" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-instagram"></i>
         </a>
-        <a href="https://youtube.com/@soloqultura" target="_blank" rel="noopener">
+        <a href="https://youtube.com/@soloqultura" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-youtube"></i>
         </a>
-        <a href="https://open.spotify.com" target="_blank" rel="noopener">
+
+        <!-- ✅ SPOTIFY: ora porta alla pagina artista (Mezzomiliardo) -->
+        <a href="https://open.spotify.com/intl-it/artist/0lZbzkTC3h5CpS736vUP4f"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Spotify — Mezzomiliardo">
           <i class="fab fa-spotify"></i>
         </a>
       </div>
@@ -264,6 +286,7 @@
   </main>
 </body>
 </html>
+
 
 
 
